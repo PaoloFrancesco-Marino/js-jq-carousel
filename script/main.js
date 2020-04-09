@@ -7,16 +7,33 @@ $(document).ready(function() {
     console.log(rightClick);
     
 
-    console.log(rightClick);
+    leftClick.click(function() {
+        console.log('click Sinistra');
+        var currentImg = $('.image-box img.active');
 
-    // ref img
-    var firstImg = $('.first-img');
-    console.log(firstImg);
+        if (currentImg.hasClass('active')) {
+            currentImg.removeClass('active')
+            currentImg.prev().addClass('active')
+        } 
+
+    });
+
+    
+    rightClick.click(function() {
+        console.log('click Destra');
+        var currentImg = $('.image-box img.active');
+
+        if (currentImg.hasClass('active')) {
+            currentImg.removeClass('active')
+            currentImg.next().addClass('active')
+        } 
+
+    });
+
+    
     
 
-    rightClick.click(function() {
-        firstImg.hide()
-    });
+    
 
 
 
