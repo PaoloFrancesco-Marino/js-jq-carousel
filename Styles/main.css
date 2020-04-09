@@ -21,6 +21,11 @@
 }
 
 /* icon */
+.icon-left a,
+.icon-right a{
+    color: #444;
+}
+
 .icon-left i,
 .icon-right i {
     font-size: 60px;
@@ -44,6 +49,7 @@
     display: block;
 }
 
+
 .image-box .slider-nav {
     position: absolute;
     width: 300px;
@@ -63,9 +69,13 @@
 
 }
 
-.slider-nav .circle-box .circle {
+.circle {
     border-radius: 50%;
     height: 20px;
     width: 20px;
     background-color: #fff;
+}
+
+.active_circle {
+    background-color: orange;
 }
