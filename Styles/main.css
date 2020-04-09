@@ -34,6 +34,13 @@
     position: relative;
 }
 
+/* image */
+.image-box img:nth-child(2),
+.image-box img:nth-child(3),
+.image-box img:nth-child(4) {
+    display: none;
+}
+
 .image-box .slider-nav {
     position: absolute;
     width: 300px;
