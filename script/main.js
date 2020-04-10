@@ -1,49 +1,31 @@
 $(document).ready(function() {
-
-
     // refs
     var leftClick = $('.icon-left > a'); //click sinistro
     var rightClick = $('.icon-right > a'); //click destro
     console.log(rightClick);
 
-    // ref img
+    // refs first/last Item
 
-    var firstImg = $('.first');
-    var lastImg = $('.last');
+    var first = $('.first');
+    var last = $('.last');
+    
+    // refs addClass
 
-    // ref circle
-    var firstCircle = $('.first_circle');
-    var lastCircle = $('.last_circle');
-    
-    
+    var activeImg = 'active';
+    var activeCircle = 'active_circle';
   
-    
     // left click
     leftClick.click(function() {
         console.log('click Sinistra');
+
         // img ref
         var currentImg = $('.image-box img.active');
+        
         // circle ref
-
         var currentCircle = $('.nav-box .circle.active_circle')
         
-        // img change
-        currentImg.removeClass('active')
-        currentImg.prev().addClass('active') 
-
-        // scorrimento img
-        if (currentImg.hasClass('first')) {
-            lastImg.addClass('active')
-        }
-        
-        //scorrimento circle
-
-        currentCircle.removeClass('active_circle');
-        currentCircle.prev().addClass('active_circle')
-
-        if (currentCircle.hasClass('first_circle')) {
-            lastCircle.addClass('active_circle')
-        }
+        prevItem(currentImg, last, activeImg);
+        prevItem(currentCircle, last, activeCircle);
 
         // end left click
     });
@@ -57,23 +39,8 @@ $(document).ready(function() {
         //circle ref
         var currentCircle = $('.nav-box .circle.active_circle')
 
-        // scorrimento img
-
-        currentImg.removeClass('active')
-        currentImg.next().addClass('active')
-        
-        if (currentImg.hasClass('last')) {
-            firstImg.addClass('active')
-        }
-
-        // scorrimento circle
-
-        currentCircle.removeClass('active_circle');
-        currentCircle.next().addClass('active_circle')
-
-        if (currentCircle.hasClass('last_circle')) {
-            firstCircle.addClass('active_circle')
-        }
+        nextItem(currentImg, first, activeImg);
+        nextItem(currentCircle, first, activeCircle) 
 
         // end right click
     });
@@ -91,51 +58,50 @@ $(document).ready(function() {
         // keycode event push
         var keyCaps = event.keyCode;
 
-        if (keyCaps == 39) {
-            // keydown right
-
-            // scorrimento img
-            currentImg.removeClass('active')
-            currentImg.next().addClass('active')
-        
-            if (currentImg.hasClass('last')) {
-            firstImg.addClass('active')
-            }
-
-            // scorrimento circle
-
-            currentCircle.removeClass('active_circle');
-            currentCircle.next().addClass('active_circle')
-
-            if (currentCircle.hasClass('last_circle')) {
-                firstCircle.addClass('active_circle')
-            }
-
-        } else if (keyCaps == 37) {
+        if (keyCaps == 37) {
             // keydown left
-
-            // img change
-            currentImg.removeClass('active')
-            currentImg.prev().addClass('active') 
-
-            // scorrimento img
-
-            if (currentImg.hasClass('first')) {
-                lastImg.addClass('active')
-            }
+            prevItem(currentImg, last, activeImg);
+            prevItem(currentCircle, last, activeCircle);
             
-            //scorrimento circle
 
-            currentCircle.removeClass('active_circle');
-            currentCircle.prev().addClass('active_circle')
-
-            if (currentCircle.hasClass('first_circle')) {
-                lastCircle.addClass('active_circle')
-            }
+        } else if (keyCaps == 39) {
+            // // keydown right
+            nextItem(currentImg, first, activeImg);
+            nextItem(currentCircle, first, activeCircle) 
         }
         // end keyword action
     });
 
     //end ready function 
 });
+
+
+/***
+ * Function Utilities
+ */
+
+// prev item (prende l'oggetto precedente)
+function prevItem (currentItem, lastItem, classItem) {
+
+    // img change
+    currentItem.removeClass(classItem)
+    currentItem.prev().addClass(classItem) 
+
+    // scorrimento img
+    if (currentItem.hasClass('first')) {
+        lastItem.addClass(classItem)
+    }    
+}
+
+// next item (prende l'ogetto successivo)
+function nextItem (currentItem, firstItem, classItem) {
+
+    currentItem.removeClass(classItem)
+    currentItem.next().addClass(classItem)
+    
+    if (currentItem.hasClass('last')) {
+        firstItem.addClass(classItem)
+    }
+}
+
 
