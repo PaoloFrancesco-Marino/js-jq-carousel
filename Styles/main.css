@@ -41,6 +41,7 @@
 
 /* image */
 .image {
+    max-width: 800px;
     display: none;
 }
 
@@ -62,7 +63,7 @@
 
 /* circle box */
 
-.slider-nav .circle-box {
+.slider-nav .nav-box {
     display: flex;
     justify-content: space-around;
     padding: 20px;
